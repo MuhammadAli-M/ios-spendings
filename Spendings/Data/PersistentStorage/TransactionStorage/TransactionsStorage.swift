@@ -10,5 +10,5 @@ import Foundation
 protocol TransactionsStorage{
     func add(_ : Transaction,
              completion: @escaping (Result<Transaction,Error>) -> Void)
-    func getAll(completion: @escaping (Result<[Transaction],Error>) -> Void)
+    func fetchAll(completion: @escaping (Result<[Transaction], Error>) -> Void)
 }

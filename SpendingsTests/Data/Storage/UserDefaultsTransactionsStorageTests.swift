@@ -22,7 +22,7 @@ class UserDefaultsTransactionsStorageTests: XCTestCase {
         let sut = UserDefaultsTransactionsStorage()
         sut.clearAll()
 
-        sut.getAll { result in
+        sut.fetchAll { result in
             
             switch result{
             case .success(let transactions):
@@ -45,7 +45,7 @@ class UserDefaultsTransactionsStorageTests: XCTestCase {
                                 category: .init(name: "Food"))
 
         sut.add(trans) { _ in }
-        sut.getAll { result in
+        sut.fetchAll { result in
 
             switch result{
             case .success(let transactions):

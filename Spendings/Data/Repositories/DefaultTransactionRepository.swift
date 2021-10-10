@@ -20,4 +20,10 @@ final class DefaultTransactionsRepository: TransactionsRepository{
             completion(result)
         }
     }
+    
+    func fetchAll(completion: @escaping (Result<[Transaction], Error>) -> Void){
+        cache.fetchAll(completion: { result in
+            completion(result)
+        })
+    }
 }

@@ -55,7 +55,7 @@ extension UserDefaultsTransactionsStorage: TransactionsStorage{
         completion(.success(transaction)) // TODO: Handle the caching error later
     }
 
-    func getAll(completion: @escaping (Result<[Transaction], Error>) -> Void) {
+    func fetchAll(completion: @escaping (Result<[Transaction], Error>) -> Void) {
         let savedTransactions = fetchTransactions()
         completion(.success(savedTransactions)) // TODO: Handle the caching error later
     }
