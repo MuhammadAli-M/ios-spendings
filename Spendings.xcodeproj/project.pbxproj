@@ -19,6 +19,11 @@
 		54C23D7E27117819008AEE47 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D7D27117819008AEE47 /* Logger.swift */; };
 		54C23D8F2711CA51008AEE47 /* AddTransactionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D8E2711CA51008AEE47 /* AddTransactionUseCaseTests.swift */; };
 		54C23D932711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D922711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift */; };
+		54C23D952712AFCC008AEE47 /* UserDefaultsTransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D942712AFCB008AEE47 /* UserDefaultsTransactionsStorage.swift */; };
+		54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D962712AFF3008AEE47 /* TransactionUDS.swift */; };
+		54C23D992712B017008AEE47 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D982712B017008AEE47 /* TransactionsStorage.swift */; };
+		54C23D9C2712B0D1008AEE47 /* TransactionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */; };
+		54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		54C23D832711C9A9008AEE47 /* SpendingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpendingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C23D8E2711CA51008AEE47 /* AddTransactionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionUseCaseTests.swift; sourceTree = "<group>"; };
 		54C23D922711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTransactionsStorageTests.swift; sourceTree = "<group>"; };
+		54C23D942712AFCB008AEE47 /* UserDefaultsTransactionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTransactionsStorage.swift; sourceTree = "<group>"; };
+		54C23D962712AFF3008AEE47 /* TransactionUDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionUDS.swift; sourceTree = "<group>"; };
+		54C23D982712B017008AEE47 /* TransactionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsStorage.swift; sourceTree = "<group>"; };
+		54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsRepository.swift; sourceTree = "<group>"; };
+		54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +139,9 @@
 		54C23D7027115C18008AEE47 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				54C23D6F27115C07008AEE47 /* UseCases */,
 				54C23D6C27115581008AEE47 /* Entities */,
+				54C23D6F27115C07008AEE47 /* UseCases */,
+				54C23D9A2712B0A2008AEE47 /* Repositories Interfaces */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -156,6 +167,7 @@
 		54C23D77271167A1008AEE47 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -171,6 +183,7 @@
 		54C23D79271169DD008AEE47 /* TransactionStorage */ = {
 			isa = PBXGroup;
 			children = (
+				54C23D982712B017008AEE47 /* TransactionsStorage.swift */,
 				54C23D7A271169FA008AEE47 /* UserDefaultTransactionStorage */,
 			);
 			path = TransactionStorage;
@@ -179,6 +192,8 @@
 		54C23D7A271169FA008AEE47 /* UserDefaultTransactionStorage */ = {
 			isa = PBXGroup;
 			children = (
+				54C23D942712AFCB008AEE47 /* UserDefaultsTransactionsStorage.swift */,
+				54C23D962712AFF3008AEE47 /* TransactionUDS.swift */,
 			);
 			path = UserDefaultTransactionStorage;
 			sourceTree = "<group>";
@@ -222,6 +237,14 @@
 				54C23D922711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		54C23D9A2712B0A2008AEE47 /* Repositories Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */,
+			);
+			path = "Repositories Interfaces";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,11 +350,16 @@
 			files = (
 				54C23D7527115EAB008AEE47 /* Cancellable.swift in Sources */,
 				54C23D59271154A1008AEE47 /* ViewController.swift in Sources */,
+				54C23D992712B017008AEE47 /* TransactionsStorage.swift in Sources */,
+				54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */,
+				54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */,
 				54C23D7227115C31008AEE47 /* AddTransactionUseCase.swift in Sources */,
 				54C23D55271154A1008AEE47 /* AppDelegate.swift in Sources */,
 				54C23D7E27117819008AEE47 /* Logger.swift in Sources */,
+				54C23D952712AFCC008AEE47 /* UserDefaultsTransactionsStorage.swift in Sources */,
 				54C23D6E271155AA008AEE47 /* Transaction.swift in Sources */,
 				54C23D57271154A1008AEE47 /* SceneDelegate.swift in Sources */,
+				54C23D9C2712B0D1008AEE47 /* TransactionsRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
