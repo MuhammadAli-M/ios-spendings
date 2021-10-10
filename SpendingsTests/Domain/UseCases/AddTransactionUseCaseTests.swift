@@ -9,26 +9,70 @@ import XCTest
 @testable import Spendings
 
 class AddTransactionUseCaseTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
+    
+    class TransactionsRepositoryMock: TransactionsRepository{
+        var transactions: [Transaction] = []
+        func add(_ transaction: Transaction, completion: @escaping (Result<Transaction, Error>) -> Void) {
+            transactions.append(transaction)
+            completion(.success(transaction))
+        }
         
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        func fetchAll(completion: @escaping (Result<[Transaction], Error>) -> Void) {
+            completion(.success(transactions))
+        }
+        
     }
+    
+//    let storage = UserDefaultsTransactionsStorage()
+    lazy var repo = TransactionsRepositoryMock()
+    lazy var sut = DefaultAddTransactionUseCase(transactionsRepo: repo)
+    
+    override func setUpWithError() throws {    }
+    override func tearDownWithError() throws {   }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testAddOneTransactionSuccessfully() throws {
+        let transaction = Transaction.stub(amount: 50, note: "Rice", category: .init(name: "Food"))
+        let request = AddTransactionUseCaseRequestValue(transaction: transaction)
+
+        sut.execute(request: request) { result in
+            switch result{
+            case .success(let expectedTransaction):
+                XCTAssertEqual(expectedTransaction, transaction)
+            case .failure(let error):
+                XCTFail("Failure occured, error: \(error.localizedDescription)")
+            }
         }
     }
+    
+    func testAddTwoTransactionsSuccessfully() throws {
+        let trans1 = Transaction.stub(amount: 50, note: "Rice", category: .init(name: "Food"))
+        let trans2 = Transaction.stub(amount: 100, note: "Cleaner", category: .init(name: "Home"))
+        
+        sut.execute(request: AddTransactionUseCaseRequestValue(transaction: trans1)) { _ in }
+        sut.execute(request: AddTransactionUseCaseRequestValue(transaction: trans2)) { _ in }
+        
+        repo.fetchAll(completion: { result in
+            switch result{
+            case .success(let expectedTransaction):
+                XCTAssertEqual(expectedTransaction, [trans1, trans2])
+            case .failure(let error):
+                XCTFail("Failure occured, error: \(error.localizedDescription)")
+            }
+        })
+    }
 
+    
+}
+
+extension Transaction{
+    static func stub(amount: Float =  25.0,
+        note: String =  "Milk",
+        date: Date =  Date(timeIntervalSince1970: 1633839399),
+        category: Category =  .init(name: "Food")) -> Self{
+        
+        Transaction(amount: amount,
+                    note: note,
+                    date: date,
+                    category: category)
+    }
 }
