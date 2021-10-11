@@ -1,29 +1,31 @@
 //
-//  AddTransactionUseCaseTests.swift
+//  FetchAllTransactionsUseCaseTests.swift
 //  SpendingsTests
 //
-//  Created by Muhammad Adam on 09/10/2021.
+//  Created by Muhammad Adam on 10/10/2021.
 //
 
 import XCTest
 @testable import Spendings
 
-class AddTransactionUseCaseTests: XCTestCase {
-        
+class FetchAllTransactionsUseCaseTests: XCTestCase {
+
     lazy var repo = TransactionsRepositoryMock()
-    lazy var sut = DefaultAddTransactionUseCase(transactionsRepo: repo)
-    
-    override func setUpWithError() throws {    }
-    override func tearDownWithError() throws {   }
+    lazy var sut = DefaultFetchAllTransactionsUseCase(transactionsRepo: repo)
+
+    override func setUpWithError() throws {}
+    override func tearDownWithError() throws {}
 
     func testAddOneTransactionSuccessfully() throws {
         let transaction = Transaction.stub(amount: 50, note: "Rice", category: .init(name: "Food"))
-        let request = AddTransactionUseCaseRequestValue(transaction: transaction)
+        
+        // Add to the repo directly
+        repo.add(transaction) { _ in }
 
-        sut.execute(request: request) { result in
+        sut.execute{ result in
             switch result{
             case .success(let expectedTransaction):
-                XCTAssertEqual(expectedTransaction, transaction)
+                XCTAssertEqual(expectedTransaction, [transaction])
             case .failure(let error):
                 XCTFail("Failure occured, error: \(error.localizedDescription)")
             }
@@ -34,8 +36,9 @@ class AddTransactionUseCaseTests: XCTestCase {
         let trans1 = Transaction.stub(amount: 50, note: "Rice", category: .init(name: "Food"))
         let trans2 = Transaction.stub(amount: 100, note: "Cleaner", category: .init(name: "Home"))
         
-        sut.execute(request: AddTransactionUseCaseRequestValue(transaction: trans1)) { _ in }
-        sut.execute(request: AddTransactionUseCaseRequestValue(transaction: trans2)) { _ in }
+        // Add to the repo directly
+        repo.add(trans1) { _ in }
+        repo.add(trans2) { _ in }
         
         repo.fetchAll(completion: { result in
             switch result{
@@ -48,15 +51,3 @@ class AddTransactionUseCaseTests: XCTestCase {
     }
 }
 
-extension Transaction{
-    static func stub(amount: Float =  25.0,
-        note: String =  "Milk",
-        date: Date =  Date(timeIntervalSince1970: 1633839399),
-        category: Category =  .init(name: "Food")) -> Self{
-        
-        Transaction(amount: amount,
-                    note: note,
-                    date: date,
-                    category: category)
-    }
-}

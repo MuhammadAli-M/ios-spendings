@@ -56,4 +56,27 @@ class UserDefaultsTransactionsStorageTests: XCTestCase {
             }
         }
     }
+    
+    
+    func test_AddTwoTransactions() throws {
+        let sut = UserDefaultsTransactionsStorage()
+        sut.clearAll()
+        
+        let trans1 = Transaction.stub(amount: 50, note: "Rice", category: .init(name: "Food"))
+        let trans2 = Transaction.stub(amount: 100, note: "Cleaner", category: .init(name: "Home"))
+        
+        sut.add(trans1) { _ in }
+        sut.add(trans2) { _ in }
+        
+        sut.fetchAll { result in
+
+            switch result{
+            case .success(let transactions):
+                
+                XCTAssertEqual([trans1,trans2], transactions)
+            case .failure(let error):
+                XCTFail("error occured: \(error.localizedDescription)")
+            }
+        }
+    }
 }
