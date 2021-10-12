@@ -27,6 +27,15 @@
 		54C23DA02712C47D008AEE47 /* FetchAllTransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9F2712C47D008AEE47 /* FetchAllTransactionsUseCase.swift */; };
 		54C23DA32712C65B008AEE47 /* TransactionRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23DA22712C65A008AEE47 /* TransactionRepositoryMock.swift */; };
 		54C23DA52712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23DA42712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift */; };
+		54E7F6DB2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6DA2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift */; };
+		54E7F6DD2713FD6400378AB2 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6DC2713FD6400378AB2 /* AppFlowCoordinator.swift */; };
+		54E7F6EE2714013800378AB2 /* TransactionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6EB2714013800378AB2 /* TransactionsListVC.swift */; };
+		54E7F6EF2714013800378AB2 /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6EC2714013800378AB2 /* TransactionsListViewModel.swift */; };
+		54E7F6F02714013800378AB2 /* TransactionsListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E7F6ED2714013800378AB2 /* TransactionsListVC.storyboard */; };
+		54E7F6F62715447E00378AB2 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6F42715447E00378AB2 /* StoryboardInstantiable.swift */; };
+		54E7F6F72715447E00378AB2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6F52715447E00378AB2 /* Observable.swift */; };
+		54E7F6F92715471600378AB2 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6F82715471500378AB2 /* AppDIContainer.swift */; };
+		54E7F6FB2715477D00378AB2 /* TransactionsSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E7F6FA2715477D00378AB2 /* TransactionsSceneFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,15 @@
 		54C23D9F2712C47D008AEE47 /* FetchAllTransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCase.swift; sourceTree = "<group>"; };
 		54C23DA22712C65A008AEE47 /* TransactionRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepositoryMock.swift; sourceTree = "<group>"; };
 		54C23DA42712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCaseTests.swift; sourceTree = "<group>"; };
+		54E7F6DA2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSceneDIContainer.swift; sourceTree = "<group>"; };
+		54E7F6DC2713FD6400378AB2 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		54E7F6EB2714013800378AB2 /* TransactionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListVC.swift; sourceTree = "<group>"; };
+		54E7F6EC2714013800378AB2 /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
+		54E7F6ED2714013800378AB2 /* TransactionsListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionsListVC.storyboard; sourceTree = "<group>"; };
+		54E7F6F42715447E00378AB2 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		54E7F6F52715447E00378AB2 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		54E7F6F82715471500378AB2 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		54E7F6FA2715477D00378AB2 /* TransactionsSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSceneFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +122,9 @@
 		54C23D53271154A1008AEE47 /* Spendings */ = {
 			isa = PBXGroup;
 			children = (
-				54C23D54271154A1008AEE47 /* AppDelegate.swift */,
-				54C23D56271154A1008AEE47 /* SceneDelegate.swift */,
 				54C23D58271154A1008AEE47 /* ViewController.swift */,
+				54E7F6D82713E88A00378AB2 /* Application */,
+				54E7F6E42714010900378AB2 /* Presentation */,
 				54C23D7027115C18008AEE47 /* Domain */,
 				54C23D7627116797008AEE47 /* Data */,
 				54C23D7327115E9D008AEE47 /* Common */,
@@ -264,6 +282,47 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		54E7F6D82713E88A00378AB2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				54C23D54271154A1008AEE47 /* AppDelegate.swift */,
+				54C23D56271154A1008AEE47 /* SceneDelegate.swift */,
+				54E7F6DC2713FD6400378AB2 /* AppFlowCoordinator.swift */,
+				54E7F6D92713E89500378AB2 /* DIContainer */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		54E7F6D92713E89500378AB2 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				54E7F6F82715471500378AB2 /* AppDIContainer.swift */,
+				54E7F6DA2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		54E7F6E42714010900378AB2 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				54E7F6FA2715477D00378AB2 /* TransactionsSceneFlowCoordinator.swift */,
+				54E7F6EB2714013800378AB2 /* TransactionsListVC.swift */,
+				54E7F6EC2714013800378AB2 /* TransactionsListViewModel.swift */,
+				54E7F6ED2714013800378AB2 /* TransactionsListVC.storyboard */,
+				54E7F6F32715445400378AB2 /* Util */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		54E7F6F32715445400378AB2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				54E7F6F52715447E00378AB2 /* Observable.swift */,
+				54E7F6F42715447E00378AB2 /* StoryboardInstantiable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -345,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E7F6F02714013800378AB2 /* TransactionsListVC.storyboard in Resources */,
 				54C23D61271154A2008AEE47 /* LaunchScreen.storyboard in Resources */,
 				54C23D5E271154A2008AEE47 /* Assets.xcassets in Resources */,
 				54C23D5C271154A1008AEE47 /* Main.storyboard in Resources */,
@@ -365,12 +425,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E7F6FB2715477D00378AB2 /* TransactionsSceneFlowCoordinator.swift in Sources */,
+				54E7F6F72715447E00378AB2 /* Observable.swift in Sources */,
 				54C23D7527115EAB008AEE47 /* Cancellable.swift in Sources */,
 				54C23DA02712C47D008AEE47 /* FetchAllTransactionsUseCase.swift in Sources */,
 				54C23D59271154A1008AEE47 /* ViewController.swift in Sources */,
+				54E7F6EE2714013800378AB2 /* TransactionsListVC.swift in Sources */,
+				54E7F6F62715447E00378AB2 /* StoryboardInstantiable.swift in Sources */,
 				54C23D992712B017008AEE47 /* TransactionsStorage.swift in Sources */,
+				54E7F6EF2714013800378AB2 /* TransactionsListViewModel.swift in Sources */,
+				54E7F6DB2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift in Sources */,
 				54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */,
 				54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */,
+				54E7F6DD2713FD6400378AB2 /* AppFlowCoordinator.swift in Sources */,
+				54E7F6F92715471600378AB2 /* AppDIContainer.swift in Sources */,
 				54C23D7227115C31008AEE47 /* AddTransactionUseCase.swift in Sources */,
 				54C23D55271154A1008AEE47 /* AppDelegate.swift in Sources */,
 				54C23D7E27117819008AEE47 /* Logger.swift in Sources */,
