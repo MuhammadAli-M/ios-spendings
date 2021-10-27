@@ -27,10 +27,13 @@ final class TransactionsSceneDIContainer {
 }
 
 extension TransactionsSceneDIContainer: TransactionsSceneDependencies{
+    
+    // Views
     func makeTransactionsListVC() -> TransactionsListVC {
         return TransactionsListVC.create(with: DefaultTransactionsListViewModel())
     }
     
+    // Coordinator
     func makeTransactionsSceneFlowCoordinator(navigationController: UINavigationController) -> TransactionsSceneFlowCoordinator{
         return TransactionsSceneFlowCoordinator(navigationController: navigationController, dependencies: self)
     }
