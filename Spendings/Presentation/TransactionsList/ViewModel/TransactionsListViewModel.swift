@@ -10,15 +10,19 @@ import Foundation
 
 protocol TransactionsListViewModelInput {
     func viewDidLoad()
+    func addBtnTapped()
 }
 
 protocol TransactionsListViewModelOutput {
-    
+    var transactions: Observable<[TransactionsListItemViewModel]> { get }
 }
 
 protocol TransactionsListViewModel: TransactionsListViewModelInput, TransactionsListViewModelOutput { }
 
 class DefaultTransactionsListViewModel: TransactionsListViewModel {
+    var transactions: Observable<[TransactionsListItemViewModel]> = .init( [.init(transaction: .init(amount: 5.0, note: "This is trial cell", date: Date(), category: .init(name: "Food")))] )
+
+    
     
     // MARK: - OUTPUT
 
@@ -28,4 +32,17 @@ class DefaultTransactionsListViewModel: TransactionsListViewModel {
 extension DefaultTransactionsListViewModel {
     func viewDidLoad() {
     }
+    
+    func addBtnTapped(){
+        
+    }
 }
+
+// MARK: - OUTPUT. View event methods
+extension DefaultTransactionsListViewModel {
+    
+
+}
+
+
+
