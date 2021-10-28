@@ -10,6 +10,12 @@
 		546CA3602727E3E60090ECBD /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA35D2727E3E60090ECBD /* AddTransactionVC.swift */; };
 		546CA3612727E3E60090ECBD /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA35E2727E3E60090ECBD /* AddTransactionViewModel.swift */; };
 		546CA3622727E3E60090ECBD /* AddTransactionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546CA35F2727E3E60090ECBD /* AddTransactionVC.storyboard */; };
+		546CA36527293F750090ECBD /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA36427293F750090ECBD /* UserDefaultsStorage.swift */; };
+		546CA367272942B90090ECBD /* UserDefaultsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA366272942B90090ECBD /* UserDefaultsStorageTests.swift */; };
+		546CA36927294B770090ECBD /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA36827294B770090ECBD /* CategoriesRepository.swift */; };
+		546CA36B27294BCE0090ECBD /* DefaultCategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA36A27294BCE0090ECBD /* DefaultCategoriesRepository.swift */; };
+		546CA36D27294C8A0090ECBD /* CategoriesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA36C27294C8A0090ECBD /* CategoriesStorage.swift */; };
+		546CA370272A70180090ECBD /* UserDefaultCategoriesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA36F272A70180090ECBD /* UserDefaultCategoriesStorage.swift */; };
 		54C23D55271154A1008AEE47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D54271154A1008AEE47 /* AppDelegate.swift */; };
 		54C23D57271154A1008AEE47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D56271154A1008AEE47 /* SceneDelegate.swift */; };
 		54C23D59271154A1008AEE47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D58271154A1008AEE47 /* ViewController.swift */; };
@@ -57,6 +63,12 @@
 		546CA35D2727E3E60090ECBD /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		546CA35E2727E3E60090ECBD /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		546CA35F2727E3E60090ECBD /* AddTransactionVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTransactionVC.storyboard; sourceTree = "<group>"; };
+		546CA36427293F750090ECBD /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		546CA366272942B90090ECBD /* UserDefaultsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTests.swift; sourceTree = "<group>"; };
+		546CA36827294B770090ECBD /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
+		546CA36A27294BCE0090ECBD /* DefaultCategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCategoriesRepository.swift; sourceTree = "<group>"; };
+		546CA36C27294C8A0090ECBD /* CategoriesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStorage.swift; sourceTree = "<group>"; };
+		546CA36F272A70180090ECBD /* UserDefaultCategoriesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultCategoriesStorage.swift; sourceTree = "<group>"; };
 		54C23D51271154A1008AEE47 /* Spendings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spendings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C23D54271154A1008AEE47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54C23D56271154A1008AEE47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */,
+				546CA36A27294BCE0090ECBD /* DefaultCategoriesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -220,7 +233,9 @@
 		54C23D78271169C8008AEE47 /* PersistentStorage */ = {
 			isa = PBXGroup;
 			children = (
+				546CA36427293F750090ECBD /* UserDefaultsStorage.swift */,
 				54C23D79271169DD008AEE47 /* TransactionStorage */,
+				546CA36E272A6FF30090ECBD /* CategoriesStorage */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -282,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				54C23D922711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift */,
+				546CA366272942B90090ECBD /* UserDefaultsStorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -290,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */,
+				546CA36827294B770090ECBD /* CategoriesRepository.swift */,
 			);
 			path = "Repositories Interfaces";
 			sourceTree = "<group>";
@@ -494,8 +511,13 @@
 				54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */,
 				54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */,
 				54E7F6FF27154E2000378AB2 /* TransactionTableViewCell.swift in Sources */,
+				546CA36527293F750090ECBD /* UserDefaultsStorage.swift in Sources */,
 				54E7F6DD2713FD6400378AB2 /* AppFlowCoordinator.swift in Sources */,
+				546CA36927294B770090ECBD /* CategoriesRepository.swift in Sources */,
 				54E7F6F92715471600378AB2 /* AppDIContainer.swift in Sources */,
+				546CA36D27294C8A0090ECBD /* CategoriesStorage.swift in Sources */,
+				546CA370272A70180090ECBD /* UserDefaultCategoriesStorage.swift in Sources */,
+				546CA36B27294BCE0090ECBD /* DefaultCategoriesRepository.swift in Sources */,
 				546CA3602727E3E60090ECBD /* AddTransactionVC.swift in Sources */,
 				54C23D7227115C31008AEE47 /* AddTransactionUseCase.swift in Sources */,
 				54C23D55271154A1008AEE47 /* AppDelegate.swift in Sources */,
@@ -517,6 +539,7 @@
 				54C23DA52712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift in Sources */,
 				54C23D932711E77E008AEE47 /* UserDefaultsTransactionsStorageTests.swift in Sources */,
 				54C23DA32712C65B008AEE47 /* TransactionRepositoryMock.swift in Sources */,
+				546CA367272942B90090ECBD /* UserDefaultsStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
