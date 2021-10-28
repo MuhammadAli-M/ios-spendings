@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TransactionsSceneDependencies{
-    func makeTransactionsListVC() -> TransactionsListVC
+    func makeTransactionsListVC(actions :TransactionsListViewModelActions) -> TransactionsListVC
+    func makeAddTransactionsVC() -> AddTransactionVC
 }
 
 final class TransactionsSceneFlowCoordinator: Coordinator{
@@ -22,8 +23,15 @@ final class TransactionsSceneFlowCoordinator: Coordinator{
     }
     
     func start() {
-        let vc = dependencies.makeTransactionsListVC()
+        let actions = TransactionsListViewModelActions(showAddTranaction: showAddTranaction)
+        
+        let vc = dependencies.makeTransactionsListVC(actions: actions)
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func showAddTranaction(){
+        let vc = dependencies.makeAddTransactionsVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

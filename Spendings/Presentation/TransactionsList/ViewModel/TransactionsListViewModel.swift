@@ -8,8 +8,14 @@
 
 import Foundation
 
+struct TransactionsListViewModelActions {
+    let showAddTranaction: () -> Void
+}
+
+
 protocol TransactionsListViewModelInput {
     func viewDidLoad()
+    func viewDidAppear()
     func addBtnTapped()
 }
 
@@ -20,21 +26,44 @@ protocol TransactionsListViewModelOutput {
 protocol TransactionsListViewModel: TransactionsListViewModelInput, TransactionsListViewModelOutput { }
 
 class DefaultTransactionsListViewModel: TransactionsListViewModel {
-    var transactions: Observable<[TransactionsListItemViewModel]> = .init( [.init(transaction: .init(amount: 5.0, note: "This is trial cell", date: Date(), category: .init(name: "Food")))] )
+    var transactions: Observable<[TransactionsListItemViewModel]> = .init([])
 
-    
+    let fetchAllTransactionsUseCase: FetchAllTransactionsUseCase
+    var actions: TransactionsListViewModelActions? = nil
+    // MARK: - Life Cycle
+    init(fetchAllTransactionsUseCase: FetchAllTransactionsUseCase, actions: TransactionsListViewModelActions? = nil) {
+        self.actions = actions
+        self.fetchAllTransactionsUseCase = fetchAllTransactionsUseCase
+    }
     
     // MARK: - OUTPUT
-
+    
+    // MARK: - Private
+    fileprivate func fetchAllTransactions() {
+        fetchAllTransactionsUseCase.execute { [weak self] result in
+            switch result{
+            case .success(let trans):
+                self?.transactions.value = trans.map{ TransactionsListItemViewModel(transaction: $0) }
+            case .failure(let error):
+                errorLog("failure: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 // MARK: - INPUT. View event methods
 extension DefaultTransactionsListViewModel {
+    
     func viewDidLoad() {
+        fetchAllTransactions()
+    }
+    
+    func viewDidAppear(){
+        fetchAllTransactions()
     }
     
     func addBtnTapped(){
-        
+        actions?.showAddTranaction()
     }
 }
 

@@ -23,6 +23,12 @@ class TransactionTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // TODO: Handle it so you only edit views not add then remove with each reuse
+        self.detailsStack.subviews.forEach { $0.removeFromSuperview()}
+    }
+    
     func fill(with model:ViewModel){
         addCategory(title: model.category)
         self.amountLabel.text = model.amount

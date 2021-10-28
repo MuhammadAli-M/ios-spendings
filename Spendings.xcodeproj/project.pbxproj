@@ -32,7 +32,7 @@
 		54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D962712AFF3008AEE47 /* TransactionUDS.swift */; };
 		54C23D992712B017008AEE47 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D982712B017008AEE47 /* TransactionsStorage.swift */; };
 		54C23D9C2712B0D1008AEE47 /* TransactionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */; };
-		54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */; };
+		54C23D9E2712B0F5008AEE47 /* DefaultTransactionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9D2712B0F5008AEE47 /* DefaultTransactionsRepository.swift */; };
 		54C23DA02712C47D008AEE47 /* FetchAllTransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23D9F2712C47D008AEE47 /* FetchAllTransactionsUseCase.swift */; };
 		54C23DA32712C65B008AEE47 /* TransactionRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23DA22712C65A008AEE47 /* TransactionRepositoryMock.swift */; };
 		54C23DA52712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C23DA42712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift */; };
@@ -88,7 +88,7 @@
 		54C23D962712AFF3008AEE47 /* TransactionUDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionUDS.swift; sourceTree = "<group>"; };
 		54C23D982712B017008AEE47 /* TransactionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsStorage.swift; sourceTree = "<group>"; };
 		54C23D9B2712B0D1008AEE47 /* TransactionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsRepository.swift; sourceTree = "<group>"; };
-		54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionRepository.swift; sourceTree = "<group>"; };
+		54C23D9D2712B0F5008AEE47 /* DefaultTransactionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionsRepository.swift; sourceTree = "<group>"; };
 		54C23D9F2712C47D008AEE47 /* FetchAllTransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCase.swift; sourceTree = "<group>"; };
 		54C23DA22712C65A008AEE47 /* TransactionRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepositoryMock.swift; sourceTree = "<group>"; };
 		54C23DA42712C69F008AEE47 /* FetchAllTransactionsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllTransactionsUseCaseTests.swift; sourceTree = "<group>"; };
@@ -126,11 +126,28 @@
 		546CA35C2727E3A50090ECBD /* Add Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				546CA36327291F090090ECBD /* View */,
 				546CA35E2727E3E60090ECBD /* AddTransactionViewModel.swift */,
+			);
+			path = "Add Transaction";
+			sourceTree = "<group>";
+		};
+		546CA36327291F090090ECBD /* View */ = {
+			isa = PBXGroup;
+			children = (
 				546CA35D2727E3E60090ECBD /* AddTransactionVC.swift */,
 				546CA35F2727E3E60090ECBD /* AddTransactionVC.storyboard */,
 			);
-			path = "Add Transaction";
+			path = View;
+			sourceTree = "<group>";
+		};
+		546CA36E272A6FF30090ECBD /* CategoriesStorage */ = {
+			isa = PBXGroup;
+			children = (
+				546CA36C27294C8A0090ECBD /* CategoriesStorage.swift */,
+				546CA36F272A70180090ECBD /* UserDefaultCategoriesStorage.swift */,
+			);
+			path = CategoriesStorage;
 			sourceTree = "<group>";
 		};
 		54C23D48271154A1008AEE47 = {
@@ -224,7 +241,7 @@
 		54C23D77271167A1008AEE47 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				54C23D9D2712B0F5008AEE47 /* DefaultTransactionRepository.swift */,
+				54C23D9D2712B0F5008AEE47 /* DefaultTransactionsRepository.swift */,
 				546CA36A27294BCE0090ECBD /* DefaultCategoriesRepository.swift */,
 			);
 			path = Repositories;
@@ -362,8 +379,8 @@
 		54E7F6FC27154DE100378AB2 /* TransactionsList */ = {
 			isa = PBXGroup;
 			children = (
-				54E7F70227155B4B00378AB2 /* ViewModel */,
 				54E7F70327155B5F00378AB2 /* View */,
+				54E7F70227155B4B00378AB2 /* ViewModel */,
 			);
 			path = TransactionsList;
 			sourceTree = "<group>";
@@ -509,7 +526,7 @@
 				54E7F6EF2714013800378AB2 /* TransactionsListViewModel.swift in Sources */,
 				54E7F6DB2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift in Sources */,
 				54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */,
-				54C23D9E2712B0F5008AEE47 /* DefaultTransactionRepository.swift in Sources */,
+				54C23D9E2712B0F5008AEE47 /* DefaultTransactionsRepository.swift in Sources */,
 				54E7F6FF27154E2000378AB2 /* TransactionTableViewCell.swift in Sources */,
 				546CA36527293F750090ECBD /* UserDefaultsStorage.swift in Sources */,
 				54E7F6DD2713FD6400378AB2 /* AppFlowCoordinator.swift in Sources */,

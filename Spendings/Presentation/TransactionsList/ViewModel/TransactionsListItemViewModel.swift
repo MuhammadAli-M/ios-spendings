@@ -14,6 +14,15 @@ struct TransactionsListItemViewModel{
     let note: String?
     let image: UIImage?
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+    
+}
+
+extension TransactionsListItemViewModel{
     init(transaction: Transaction){
         self.amount = String(transaction.amount)
         self.note = transaction.note
@@ -21,11 +30,4 @@ struct TransactionsListItemViewModel{
         self.category = transaction.category.name
         self.image = UIImage(systemName: "checkmark.diamond")  // TODO: to be changed
     }
-    
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-    
 }
