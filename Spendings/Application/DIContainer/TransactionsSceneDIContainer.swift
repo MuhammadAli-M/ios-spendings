@@ -26,10 +26,6 @@ final class TransactionsSceneDIContainer {
         return DefaultFetchAllTransactionsUseCase(transactionsRepo: transactionsRepository)
     }
     
-//    func makeFetchAllTransactionsUseCase() -> FetchAllTransactionsUseCase{
-//        return DefaultFetchAllTransactionsUseCase(transactionsRepo: transactionsRepository)
-//    }
-
 }
 
 extension TransactionsSceneDIContainer: TransactionsSceneDependencies{
