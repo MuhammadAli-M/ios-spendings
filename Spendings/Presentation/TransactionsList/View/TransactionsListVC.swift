@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionsListVC: UIViewController, StoryboardInstantiable {
     
+    @IBOutlet weak var totalLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: TransactionsListViewModel!
@@ -21,9 +22,18 @@ class TransactionsListVC: UIViewController, StoryboardInstantiable {
         return vc
     }
     
+    func bind(to viewModel: TransactionsListViewModel) {
+        viewModel.transactions.observe(on: self) { [weak self] _ in self?.reload() }
+        viewModel.total.observe(on: self) { [weak self] totalValue in
+            self?.totalLbl.text = String(totalValue)
+        }
+    }
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupViews()
         bind(to: viewModel)
         viewModel.viewDidLoad()
         setupTableView()
@@ -32,6 +42,16 @@ class TransactionsListVC: UIViewController, StoryboardInstantiable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.viewDidAppear()
+        addButton.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        addButton.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setupAddButton()
     }
     
@@ -58,14 +78,18 @@ class TransactionsListVC: UIViewController, StoryboardInstantiable {
         addButton.addTarget(self, action: #selector(addBtnTapped), for: .touchUpInside)
     }
     
-    func bind(to viewModel: TransactionsListViewModel) {
-        viewModel.transactions.observe(on: self) { [weak self] _ in self?.reload() }
+    func setupViews(){
+        
     }
+//    func updateAddButtonAppearance(){
+//        addButton.isHidden = self.viewIfLoaded?.window == nil
+//    }
     
     func reload(){
         tableView.reloadData()
     }
     
+    // MARK: - Actions
     @objc func addBtnTapped(){
         viewModel.addBtnTapped()
     }

@@ -15,7 +15,7 @@ final class TransactionsSceneDIContainer {
     
     lazy var transactionsRepository: TransactionsRepository = DefaultTransactionsRepository(cache: transactionsStorage)
     lazy var categoriesRepository: CategoriesRepository = DefaultCategoryRepository(cache: categoriesStorage)
-
+    
     // MARK: Use Cases
     func makeAddTransactionUseCase() -> AddTransactionUseCase{
         return DefaultAddTransactionUseCase(transactionsRepo: transactionsRepository,
@@ -24,6 +24,17 @@ final class TransactionsSceneDIContainer {
     
     func makeFetchAllTransactionsUseCase() -> FetchAllTransactionsUseCase{
         return DefaultFetchAllTransactionsUseCase(transactionsRepo: transactionsRepository)
+    }
+    
+    init(){
+        // TODO: Move it to somewhere else or encapsulate it
+        let kRunBefore = "MA.Spendings.com.RunBefore"
+        let runBefore = UserDefaults.standard.object(forKey: kRunBefore) as? Bool
+        if runBefore != true {
+            let categories = ["Food", "Home", "Transportations"]
+            categories.forEach{ categoriesStorage.add(.init(name: $0)) { _ in } }
+            UserDefaults.standard.set(true, forKey: kRunBefore)
+        }
     }
     
 }
@@ -36,8 +47,9 @@ extension TransactionsSceneDIContainer: TransactionsSceneDependencies{
                                                                                 actions: actions))
     }
     
-    func makeAddTransactionsVC() -> AddTransactionVC {
-        return AddTransactionVC.create(with: DefaultAddTransactionViewModel(addTransactionUseCase: makeAddTransactionUseCase()))
+    func makeAddTransactionsVC(actions: AddTransactionViewModelActions) -> AddTransactionVC {
+        return AddTransactionVC.create(with: DefaultAddTransactionViewModel(addTransactionUseCase: makeAddTransactionUseCase(),
+                                                                            actions: actions))
     }
     
     // Coordinator

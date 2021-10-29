@@ -17,6 +17,7 @@ protocol TransactionsListViewModelInput {
     func viewDidLoad()
     func viewDidAppear()
     func addBtnTapped()
+    var total: Observable<Double> { get }
 }
 
 protocol TransactionsListViewModelOutput {
@@ -26,8 +27,7 @@ protocol TransactionsListViewModelOutput {
 protocol TransactionsListViewModel: TransactionsListViewModelInput, TransactionsListViewModelOutput { }
 
 class DefaultTransactionsListViewModel: TransactionsListViewModel {
-    var transactions: Observable<[TransactionsListItemViewModel]> = .init([])
-
+    
     let fetchAllTransactionsUseCase: FetchAllTransactionsUseCase
     var actions: TransactionsListViewModelActions? = nil
     // MARK: - Life Cycle
@@ -37,13 +37,22 @@ class DefaultTransactionsListViewModel: TransactionsListViewModel {
     }
     
     // MARK: - OUTPUT
-    
+    var transactions: Observable<[TransactionsListItemViewModel]> = .init([])
+    var total: Observable<Double> = .init(0)
+
     // MARK: - Private
     fileprivate func fetchAllTransactions() {
         fetchAllTransactionsUseCase.execute { [weak self] result in
             switch result{
             case .success(let trans):
-                self?.transactions.value = trans.map{ TransactionsListItemViewModel(transaction: $0) }
+                self?.transactions.value = []
+                self?.total.value = 0
+                for transaction in trans{
+                    self?.transactions.value.append(TransactionsListItemViewModel(transaction: transaction))
+                    self?.total.value += Double(transaction.amount)
+                }
+//                self?.transactions.value = trans.map{ TransactionsListItemViewModel(transaction: $0) }
+//                self?.total.value = trans.value
             case .failure(let error):
                 errorLog("failure: \(error.localizedDescription)")
             }

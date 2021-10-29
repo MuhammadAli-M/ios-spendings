@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+struct AddTransactionViewModelActions {
+    let showTransactionsList: () -> Void
+}
+
 protocol AddTransactionViewModelInput {
     func viewDidLoad()
     func didSelectCategory(category: CategoryViewModel)
@@ -24,14 +28,16 @@ protocol AddTransactionViewModel: AddTransactionViewModelInput, AddTransactionVi
 class DefaultAddTransactionViewModel: AddTransactionViewModel {
     
     let addTransactionUseCase: AddTransactionUseCase
-
+    var actions: AddTransactionViewModelActions? = nil
     // MARK: - OUTPUT
     let availableCategories: Observable<[CategoryViewModel]> = Observable([])
     let selectedCategory: Observable<CategoryViewModel?> = Observable(nil)
     
     // MARK: - Life Cycle
-    init(addTransactionUseCase: AddTransactionUseCase) { // TODO: Add the actions for the navigation
+    init(addTransactionUseCase: AddTransactionUseCase,
+         actions: AddTransactionViewModelActions? = nil) { // TODO: Add the actions for the navigation
         self.addTransactionUseCase = addTransactionUseCase
+        self.actions = actions
     }
 
     // MARK: Private
@@ -75,10 +81,11 @@ extension DefaultAddTransactionViewModel {
                                       date: transactionVM.date,
                                       category: .init(name: selectedCategoryValue.name))
         
-        addTransactionUseCase.execute(request: .init(transaction: transaction)) { result  in
+        addTransactionUseCase.execute(request: .init(transaction: transaction)) { [weak self] result  in
             switch result{
             case .success(_):
                 completion(.success(true))
+                self?.actions?.showTransactionsList()
             case .failure(_):
                 completion(.failure(.cacheFailure))  // TODO: reconsider it
             }

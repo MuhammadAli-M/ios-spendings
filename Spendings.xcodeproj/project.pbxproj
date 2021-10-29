@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54541D30272BEA2A00EA1803 /* UITextField+ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54541D2F272BEA2A00EA1803 /* UITextField+ButtonActions.swift */; };
 		546CA3602727E3E60090ECBD /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA35D2727E3E60090ECBD /* AddTransactionVC.swift */; };
 		546CA3612727E3E60090ECBD /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546CA35E2727E3E60090ECBD /* AddTransactionViewModel.swift */; };
 		546CA3622727E3E60090ECBD /* AddTransactionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546CA35F2727E3E60090ECBD /* AddTransactionVC.storyboard */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54541D2F272BEA2A00EA1803 /* UITextField+ButtonActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ButtonActions.swift"; sourceTree = "<group>"; };
 		546CA35D2727E3E60090ECBD /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		546CA35E2727E3E60090ECBD /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		546CA35F2727E3E60090ECBD /* AddTransactionVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTransactionVC.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54541D2E272BE9F000EA1803 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				54541D2F272BEA2A00EA1803 /* UITextField+ButtonActions.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		546CA35C2727E3A50090ECBD /* Add Transaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +380,7 @@
 		54E7F6F32715445400378AB2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				54541D2E272BE9F000EA1803 /* UI */,
 				54E7F6F52715447E00378AB2 /* Observable.swift */,
 				54E7F6F42715447E00378AB2 /* StoryboardInstantiable.swift */,
 			);
@@ -525,6 +536,7 @@
 				54C23D992712B017008AEE47 /* TransactionsStorage.swift in Sources */,
 				54E7F6EF2714013800378AB2 /* TransactionsListViewModel.swift in Sources */,
 				54E7F6DB2713E8CB00378AB2 /* TransactionsSceneDIContainer.swift in Sources */,
+				54541D30272BEA2A00EA1803 /* UITextField+ButtonActions.swift in Sources */,
 				54C23D972712AFF3008AEE47 /* TransactionUDS.swift in Sources */,
 				54C23D9E2712B0F5008AEE47 /* DefaultTransactionsRepository.swift in Sources */,
 				54E7F6FF27154E2000378AB2 /* TransactionTableViewCell.swift in Sources */,
