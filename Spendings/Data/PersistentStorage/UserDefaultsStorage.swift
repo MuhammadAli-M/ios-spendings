@@ -32,10 +32,10 @@ final class UserDefaultsStorage<Element: CachedItem, ElementUDS: CachedElementUD
                 let transactions = try JSONDecoder().decode([ElementUDS].self, from: transactionsData)
                 return transactions.map{ $0.toDomain()}
             }catch{
-                debugLog("can't decode saved transactions: \(transactionsData),\nerror: \(error.localizedDescription)")
+                debugLog("can't decode saved items: \(transactionsData),\nerror: \(error.localizedDescription)")
             }
         }else{
-            debugLog("can't retrieve saved transactions with key: \(key)")
+            debugLog("can't retrieve saved items with key: \(key)")
         }
         return []
     }
@@ -46,7 +46,7 @@ final class UserDefaultsStorage<Element: CachedItem, ElementUDS: CachedElementUD
             let transactionsUSDEncoded = try JSONEncoder().encode(transactionsUSD)
             userDefaults.set(transactionsUSDEncoded, forKey: key)
         }catch{
-            debugLog("can't save transactions, transactions: \(transactions),\nerror: \(error.localizedDescription)")
+            debugLog("can't save item, items: \(transactions),\nerror: \(error.localizedDescription)")
         }
     }
     
