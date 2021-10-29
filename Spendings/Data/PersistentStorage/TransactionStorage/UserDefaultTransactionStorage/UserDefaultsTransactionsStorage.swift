@@ -11,6 +11,7 @@ final class UserDefaultsTransactionsStorage{
     
     private let key = "UserDefaultsTransactionsStorage"
     private var userDefaults: UserDefaults
+//    private var transactions: [Transaction]? = nil // TODO: Add it so as not to read from userdefaults each time
     
     init(userDefaults: UserDefaults = .standard){
         self.userDefaults = userDefaults
@@ -49,14 +50,14 @@ final class UserDefaultsTransactionsStorage{
 
 extension UserDefaultsTransactionsStorage: TransactionsStorage{
     func add(_ transaction: Transaction, completion: @escaping (Result<Transaction, Error>) -> Void) {
-        var savedTransactions = fetchTransactions()
+        var savedTransactions = fetchTransactions() // TODO: add guard from running on different threads
         savedTransactions.append(transaction)
         persist(transactions: savedTransactions)
         completion(.success(transaction)) // TODO: Handle the caching error later
     }
 
     func fetchAll(completion: @escaping (Result<[Transaction], Error>) -> Void) {
-        let savedTransactions = fetchTransactions()
+        let savedTransactions = fetchTransactions() // TODO: add guard from running on different threads
         completion(.success(savedTransactions)) // TODO: Handle the caching error later
     }
 }
